@@ -1,8 +1,23 @@
 import { IoShield } from "react-icons/io5";
 import { FaSuitcase } from "react-icons/fa";
 import { IoPawSharp } from "react-icons/io5";
-
+import { useState, useEffect } from "react";
 const Pet = () => {
+  const [selectedTab, setSelectedTab] = useState("likes");
+  const [articulos, setArticulos] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      "https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=beng&api_key=REPLACE_ME"
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((articulos) => {
+        setArticulos(articulos);
+      });
+  }, []);
+
   return (
     <div className="flex col-5 w-full h-screen">
       <div className="flex flex-col w-1/4 min-w-64 bg-[#0e1013] col-span-1  max-md:hidden border-r border-[#a0a8b1] ">
@@ -28,7 +43,15 @@ const Pet = () => {
           </ul>
         </div>
       </div>
-      <div className="flex w-full bg-[#000000] col-span-1"></div>
+      <div className="flex w-full bg-[#000000] col-span-1">
+        {articulos.map((art) => {
+          return (
+            <div key={art.id}>
+              <img src={art.url} alt={art.url} />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
