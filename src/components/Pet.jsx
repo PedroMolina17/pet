@@ -14,7 +14,12 @@ const Pet = () => {
     console.log(myIdentifier + " left the screen");
   };
 
+  const handleTab = (tab) => {
+    setSelectedTab(tab);
+    console.log(tab);
+  };
   const [selectedTab, setSelectedTab] = useState("likes");
+
   const [articulos, setArticulos] = useState([]);
 
   useEffect(() => {
@@ -48,9 +53,30 @@ const Pet = () => {
         </div>
         <div className="flex text-white col-span-4  px-8 py-3 ">
           <ul className="flex gap-4 justify-between items-center">
-            <li>Likes</li>
-            <li>Mensajes</li>
-            <li>Expirado</li>
+            <li
+              onClick={() => handleTab("Likes")}
+              className={`cursor-pointer ${
+                selectedTab === "Likes" ? "border-b-2 border-[#ff4458]" : ""
+              }`}
+            >
+              Likes
+            </li>
+            <li
+              onClick={() => handleTab("Mensajes")}
+              className={`cursor-pointer ${
+                selectedTab === "Mensajes" ? "border-b-2 border-[#ff4458]" : ""
+              }`}
+            >
+              Mensajes
+            </li>
+            <li
+              onClick={() => handleTab("Expirado")}
+              className={`cursor-pointer ${
+                selectedTab === "Expirado" ? "border-b-2 border-[#ff4458]" : ""
+              }`}
+            >
+              Expirado
+            </li>
           </ul>
         </div>
       </div>
