@@ -2,7 +2,16 @@ import { IoShield } from "react-icons/io5";
 import { FaSuitcase } from "react-icons/fa";
 import { IoPawSharp } from "react-icons/io5";
 import { useState, useEffect } from "react";
+import TinderCard from "react-tinder-card";
+
 const Pet = () => {
+  const onSwipe = (direction) => {
+    console.log("You swiped: " + direction);
+  };
+  const onCardLeftScreen = (myIdentifier) => {
+    console.log(myIdentifier + " left the screen");
+  };
+
   const [selectedTab, setSelectedTab] = useState("likes");
   const [articulos, setArticulos] = useState([]);
 
@@ -46,9 +55,22 @@ const Pet = () => {
       <div className="flex w-full bg-[#000000] col-span-1">
         {articulos.map((art) => {
           return (
-            <div key={art.id}>
-              <img src={art.url} alt={art.url} />
-            </div>
+            <TinderCard
+              className="absolute w-96 h-96"
+              key={art.id}
+              onSwipe={onSwipe}
+              onCardLeftScreen={() => onCardLeftScreen("fooBar")}
+              preventSwipe={["up", "down"]}
+            >
+              <img
+                src={art.url}
+                alt={art.url}
+                width={200}
+                height={200}
+                className=""
+              ></img>{" "}
+              <div className="relative top-0">aaaaaaaaaaa</div>
+            </TinderCard>
           );
         })}
       </div>
