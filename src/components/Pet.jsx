@@ -3,6 +3,8 @@ import { FaSuitcase } from "react-icons/fa";
 import { IoPawSharp } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import TinderCard from "react-tinder-card";
+import { ImCross } from "react-icons/im";
+import { IoReloadOutline } from "react-icons/io5";
 
 const Pet = () => {
   const onSwipe = (direction) => {
@@ -28,7 +30,7 @@ const Pet = () => {
   }, []);
 
   return (
-    <div className="flex col-5 w-full h-screen">
+    <div className="flex col-5 w-full h-screen absolute">
       <div className="flex flex-col w-1/4 min-w-64 bg-[#0e1013] col-span-1  max-md:hidden border-r border-[#a0a8b1] ">
         <div className="flex w-full justify-between items-center  py-6 px-4 bg-gradient-to-tr from-[#fd2878] to-[#ff5c3b]">
           <div className="font-bold"> Usuario </div>
@@ -52,25 +54,46 @@ const Pet = () => {
           </ul>
         </div>
       </div>
-      <div className="flex w-full bg-[#000000] col-span-1">
+      <div className="flex w-full  bg-[#000000] col-span-1 items-center justify-center">
         {articulos.map((art) => {
           return (
-            <TinderCard
-              className="absolute w-96 h-96"
+            <div
               key={art.id}
-              onSwipe={onSwipe}
-              onCardLeftScreen={() => onCardLeftScreen("fooBar")}
-              preventSwipe={["up", "down"]}
+              className="flex vh-100 items-center justify-center shadow-2xl shadow-white "
             >
-              <img
-                src={art.url}
-                alt={art.url}
-                width={200}
-                height={200}
-                className=""
-              ></img>{" "}
-              <div className="relative top-0">aaaaaaaaaaa</div>
-            </TinderCard>
+              <TinderCard
+                className="absolute "
+                key={art.id}
+                onSwipe={onSwipe}
+                onCardLeftScreen={() => onCardLeftScreen("fooBar")}
+                preventSwipe={["up", "down"]}
+              >
+                <div>
+                  <img
+                    className="object-cover"
+                    src={art.url}
+                    alt={art.url}
+                    style={{ height: 800, width: "auto" }}
+                  ></img>{" "}
+                  <div className="px-5 fixed  bottom-24 text-4xl ">
+                    {art.id}
+                  </div>
+                </div>
+                <div className="flex flex-col w-full fixed bottom-0 bg-black p-5">
+                  <div className="flex gap-1 justify-center items-center text-4xl">
+                    <button className="border rounded-full p-2 border-red-500">
+                      <ImCross className="text-red-500"></ImCross>
+                    </button>
+                    <button className="border rounded-full p-2 border-blue-500">
+                      <IoReloadOutline className="text-blue-500 transform scale-x-[-1]"></IoReloadOutline>
+                    </button>
+                    <button className="border rounded-full p-2 border-green-500">
+                      <IoPawSharp className="text-green-500 "></IoPawSharp>
+                    </button>
+                  </div>
+                </div>
+              </TinderCard>
+            </div>
           );
         })}
       </div>
