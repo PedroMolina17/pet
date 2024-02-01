@@ -30,7 +30,7 @@ const Pet = () => {
   }, []);
 
   return (
-    <div className="flex col-5 w-full h-screen absolute">
+    <div className="flex col-5 w-full h-screen absolute   ">
       <div className="flex flex-col w-1/4 min-w-64 bg-[#0e1013] col-span-1  max-md:hidden border-r border-[#a0a8b1] ">
         <div className="flex w-full justify-between items-center  py-6 px-4 bg-gradient-to-tr from-[#fd2878] to-[#ff5c3b]">
           <div className="font-bold"> Usuario </div>
@@ -54,12 +54,12 @@ const Pet = () => {
           </ul>
         </div>
       </div>
-      <div className="flex w-full  bg-[#000000] col-span-1 items-center justify-center">
+      <div className="flex w-full bg-[#000000] col-span-1 items-center justify-center">
         {articulos.map((art) => {
           return (
             <div
               key={art.id}
-              className="flex vh-100 items-center justify-center shadow-2xl shadow-white "
+              className=" flex vh-100 items-center justify-center shadow-2xl shadow-white "
             >
               <TinderCard
                 className="absolute "
@@ -68,19 +68,19 @@ const Pet = () => {
                 onCardLeftScreen={() => onCardLeftScreen("fooBar")}
                 preventSwipe={["up", "down"]}
               >
-                <div>
+                <div className="w-full md:w-96  ">
                   <img
-                    className="object-cover"
+                    className="rounded-2xl "
                     src={art.url}
                     alt={art.url}
-                    style={{ height: 800, width: "auto" }}
+                    style={{ height: 800, width: "100%", objectFit: "cover" }}
                   ></img>{" "}
-                  <div className="px-5 fixed  bottom-24 text-4xl ">
+                  <div className="px-5 fixed  bottom-0 h-52  right-0 left-0 text-4xl bg-gradient-to-b from-transparent via-black to-black  ">
                     {art.id}
                   </div>
                 </div>
                 <div className="flex flex-col w-full fixed bottom-0 bg-black p-5">
-                  <div className="flex gap-1 justify-center items-center text-4xl">
+                  <div className="flex gap-4 justify-center items-center text-4xl">
                     <button className="border rounded-full p-2 border-red-500">
                       <ImCross className="text-red-500"></ImCross>
                     </button>
