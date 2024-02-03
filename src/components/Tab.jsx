@@ -1,29 +1,28 @@
 import PropTypes from "prop-types";
-
 const Tab = ({ selectedTab, handleTab }) => {
   return (
     <div className="flex text-white col-span-4  px-8 py-3 ">
       <ul className="flex gap-4 justify-between items-center">
         <li
-          onClick={() => handleTab("Likes")}
+          onClick={() => handleTab("likes")}
           className={`cursor-pointer ${
-            selectedTab === "Likes" ? "border-b-2 border-[#ff4458]" : ""
+            selectedTab === "likes" ? "border-b-2 border-[#ff4458]" : ""
           }`}
         >
           Likes
         </li>
         <li
-          onClick={() => handleTab("Mensajes")}
+          onClick={() => handleTab("message")}
           className={`cursor-pointer ${
-            selectedTab === "Mensajes" ? "border-b-2 border-[#ff4458]" : ""
+            selectedTab === "message" ? "border-b-2 border-[#ff4458]" : ""
           }`}
         >
-          Mensajes
+          Mensaje
         </li>
         <li
-          onClick={() => handleTab("Expirado")}
+          onClick={() => handleTab("expired")}
           className={`cursor-pointer ${
-            selectedTab === "Expirado" ? "border-b-2 border-[#ff4458]" : ""
+            selectedTab === "expired" ? "border-b-2 border-[#ff4458]" : ""
           }`}
         >
           Expirado
