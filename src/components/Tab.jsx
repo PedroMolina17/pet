@@ -3,30 +3,30 @@ const Tab = ({ selectedTab, handleTab }) => {
   return (
     <div className="flex text-white col-span-4  px-8 py-3 ">
       <ul className="flex gap-4 justify-between items-center">
-        <li
+        <button
           onClick={() => handleTab("likes")}
           className={`cursor-pointer ${
             selectedTab === "likes" ? "border-b-2 border-[#ff4458]" : ""
           }`}
         >
           Likes
-        </li>
-        <li
+        </button>
+        <button
           onClick={() => handleTab("message")}
           className={`cursor-pointer ${
             selectedTab === "message" ? "border-b-2 border-[#ff4458]" : ""
           }`}
         >
           Mensaje
-        </li>
-        <li
+        </button>
+        <button
           onClick={() => handleTab("expired")}
           className={`cursor-pointer ${
             selectedTab === "expired" ? "border-b-2 border-[#ff4458]" : ""
           }`}
         >
           Expirado
-        </li>
+        </button>
       </ul>
     </div>
   );
