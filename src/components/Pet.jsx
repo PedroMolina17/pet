@@ -39,9 +39,12 @@ const Pet = () => {
   return (
     <>
       <div className="flex col-5 w-full h-screen absolute bg-[#0e1013]">
-        <div className="bg-[#0e1013] fixed top-0 right-0 left-0 text-white p-2 md:hidden justify-start flex items-center gap-1">
-          <IoPawSharp className="text-green-500 text-4xl inline" />
-          <span className="inline  text-xl font-bold">Pet</span>
+        <div
+          className="bg-[#0e1013] fixed top-0 right-0 left-0 text-white p-2 md:hidden justify-start flex items-center gap-1"
+          style={{ zIndex: 2 }}
+        >
+          <IoPawSharp className="text-red-500 text-4xl inline" />
+          <span className="inline  text-xl font-bold text-red-500">Pet</span>
         </div>
 
         <div className="flex flex-col w-1/4 min-w-64 bg-[#0e1013] col-span-1  max-md:hidden border-r border-[#a0a8b1] ">
@@ -64,12 +67,12 @@ const Pet = () => {
           {selectedTab === "message" && <Message />}
           {selectedTab === "expired" && <Expired />}
         </div>
-        <div className="flex w-full bg-[#000000] max-md:bg-[#0e1013] col-span-1 items-center justify-center">
+        <div className="flex w-full bg-[#000000] max-md:bg-[#0e1013]  justify-center flex-col items-center">
           {articulos.map((art) => {
             return (
               <div
                 key={art.id}
-                className=" flex vh-100 items-center justify-center shadow-2xl shadow-white "
+                className=" flex vh-100 items-center justify-center shadow-2xl shadow-white  flex-col"
               >
                 <TinderCard
                   className="absolute "
@@ -78,13 +81,16 @@ const Pet = () => {
                   onCardLeftScreen={() => onCardLeftScreen("fooBar")}
                   preventSwipe={["up", "down"]}
                 >
-                  <div className="w-full md:w-96 ">
+                  <div
+                    className="w-full md:w-96 h-full"
+                    style={{ height: 800, zIndex: 0 }}
+                  >
                     <img
-                      className="rounded-2xl "
+                      className="rounded-2xl h-full"
                       src={art.url}
                       alt={art.url}
                       style={{
-                        height: 800,
+                        height: "100%",
                         width: "100%",
                         objectFit: "cover",
                       }}
