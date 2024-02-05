@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const Message = () => {
   const messages = [
     {
@@ -100,29 +101,31 @@ const Message = () => {
       <div className="flex flex-col w-full ">
         {messages.map((message) => {
           return (
-            <div
-              key={message.id}
-              className=" px-6 py-3 w-full flex  items-center hover:border-r-4 hover:border-red-500"
-            >
-              <img
-                className="rounded-full"
-                style={{
-                  width: "80px",
-                  height: "80px",
-                  objectFit: "cover",
-                }}
-                alt="Usuario"
-                src={message.imgUrl}
-              ></img>
-              <div className="flex mx-4 flex-col  ">
-                <p className="font-bold text-xl overflow-hidden h-8 ">
-                  {message.usuario}
-                </p>
-                <p className="text-[#69727e]  overflow-hidden h-6 ">
-                  {message.message}
-                </p>
+            <Link key={message.id}>
+              <div
+                key={message.id}
+                className=" px-6 py-3 w-full flex  items-center hover:border-r-4 hover:border-red-500"
+              >
+                <img
+                  className="rounded-full"
+                  style={{
+                    width: "80px",
+                    height: "80px",
+                    objectFit: "cover",
+                  }}
+                  alt="Usuario"
+                  src={message.imgUrl}
+                ></img>
+                <div className="flex mx-4 flex-col w-60 min-w-14">
+                  <p className="font-bold text-xl whitespace-nowrap overflow-hidden text-ellipsis h-8    ">
+                    {message.usuario}
+                  </p>
+                  <p className="text-[#69727e]  whitespace-nowrap overflow-hidden text-ellipsis h-6 ">
+                    {message.message}
+                  </p>
+                </div>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>
