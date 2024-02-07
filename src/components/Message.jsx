@@ -91,14 +91,14 @@ const Message = () => {
   ];
   return (
     <div
-      className="flex "
+      className="flex flex-col "
       style={{
         overflow: "scroll",
         scrollbarWidth: "none",
         msOverflowStyle: "none",
       }}
     >
-      <div className="flex flex-col w-full ">
+      <div className="flex flex-col w-full  ">
         {messages.map((message) => {
           return (
             <Link key={message.id}>
@@ -116,7 +116,7 @@ const Message = () => {
                   alt="Usuario"
                   src={message.imgUrl}
                 ></img>
-                <div className="flex mx-4 flex-col w-60 min-w-14">
+                <div className="flex mx-4 flex-col flex-grow min-w-0">
                   <p className="font-bold text-xl whitespace-nowrap overflow-hidden text-ellipsis h-8    ">
                     {message.usuario}
                   </p>

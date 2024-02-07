@@ -44,14 +44,6 @@ const Pet = () => {
   return (
     <>
       <div className="flex col-5 w-full h-screen absolute bg-[#0e1013] overflow-hidden">
-        <div
-          className="bg-[#0e1013] fixed top-0 right-0 left-0 text-white p-2 md:hidden justify-start flex items-center gap-1"
-          style={{ zIndex: 2 }}
-        >
-          <IoPawSharp className="text-red-500 text-4xl inline" />
-          <span className="inline  text-xl font-bold text-red-500 ">Pet</span>
-        </div>
-
         <div className="flex flex-col w-1/4 min-w-72 bg-[#0e1013] col-span-1  max-md:hidden border-r border-[#a0a8b1] ">
           <div className="flex w-full justify-between items-center  py-6 px-4 bg-gradient-to-tr from-[#fd2878] to-[#ff5c3b]">
             <button
@@ -79,64 +71,73 @@ const Pet = () => {
           {selectedTab === "expired" && <Expired />}
         </div>
 
-        <div className="flex w-full bg-[#000000] max-md:bg-[#0e1013]  justify-center flex-col items-center">
-          {tabmobile === "likes" && <Like />}
-          {tabmobile === "message" && <Message />}
-          {tabmobile === "expired" && <Expired />}
-          {tabmobile === "home" &&
-            articulos.map((art) => {
-              return (
-                <div
-                  key={art.id}
-                  className=" flex vh-100 items-center justify-center shadow-2xl shadow-white  flex-col"
-                >
-                  <TinderCard
-                    className="absolute "
+        <div className="flex w-full bg-[#000000] max-md:bg-[#0e1013]  md:justify-center flex-col md:items-center  ">
+          <div
+            className="bg-[#0e1013] text-white p-2  w-full md:hidden flex gap-1"
+            style={{ zIndex: 2 }}
+          >
+            <IoPawSharp className="text-red-500 text-4xl inline" />
+            <span className="inline  text-xl font-bold text-red-500 ">Pet</span>
+          </div>
+          <div className="flex flex-col md:justify-center md:items-center overflow-hidden h-screen">
+            {tabmobile === "likes" && <Like />}
+            {tabmobile === "message" && <Message />}
+            {tabmobile === "expired" && <Expired />}
+            {tabmobile === "home" &&
+              articulos.map((art) => {
+                return (
+                  <div
                     key={art.id}
-                    onSwipe={onSwipe}
-                    onCardLeftScreen={() => onCardLeftScreen("fooBar")}
-                    preventSwipe={["up", "down"]}
+                    className=" flex  md:items-center md:justify-center shadow-2xl shadow-white  flex-col"
                   >
-                    <div
-                      className="w-full md:w-96 h-full"
-                      style={{ height: 800, zIndex: 0 }}
+                    <TinderCard
+                      className="absolute "
+                      key={art.id}
+                      onSwipe={onSwipe}
+                      onCardLeftScreen={() => onCardLeftScreen("fooBar")}
+                      preventSwipe={["up", "down"]}
                     >
-                      <img
-                        className="rounded-2xl h-full"
-                        src={art.url}
-                        alt={art.url}
-                        style={{
-                          height: "100%",
-                          width: "100%",
-                          objectFit: "cover",
-                        }}
-                      ></img>{" "}
-                      <div className="px-5 fixed  bottom-0 h-52  right-0 left-0 text-4xl bg-gradient-to-b from-transparent via-black to-black  ">
-                        {art.id}
+                      <div
+                        className="w-full md:w-96 h-full"
+                        style={{ height: 800, zIndex: 0 }}
+                      >
+                        <img
+                          className="rounded-2xl h-full"
+                          src={art.url}
+                          alt={art.url}
+                          style={{
+                            height: "100%",
+                            width: "100%",
+                            objectFit: "cover",
+                          }}
+                        ></img>{" "}
+                        <div className="px-5 fixed  bottom-0 h-52  right-0 left-0 text-4xl bg-gradient-to-b from-transparent via-black to-black  ">
+                          {art.id}
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex flex-col w-full fixed bottom-0 bg-black p-5 rounded-br-xl rounded-bl-xl">
-                      <div className="flex gap-4 justify-center items-center text-4xl">
-                        <button className="border rounded-full p-2 border-red-500">
-                          <ImCross className="text-red-500 "></ImCross>
-                        </button>
-                        <button className="border rounded-full p-2 border-blue-500">
-                          <IoReloadOutline className="text-blue-500 transform scale-x-[-1]"></IoReloadOutline>
-                        </button>
-                        <button className="border rounded-full p-2 border-green-500">
-                          <IoPawSharp className="text-green-500 "></IoPawSharp>
-                        </button>
+                      <div className="flex flex-col w-full fixed bottom-0 bg-black p-5 rounded-br-xl rounded-bl-xl">
+                        <div className="flex gap-4 justify-center items-center text-4xl">
+                          <button className="border rounded-full p-2 border-red-500">
+                            <ImCross className="text-red-500 "></ImCross>
+                          </button>
+                          <button className="border rounded-full p-2 border-blue-500">
+                            <IoReloadOutline className="text-blue-500 transform scale-x-[-1]"></IoReloadOutline>
+                          </button>
+                          <button className="border rounded-full p-2 border-green-500">
+                            <IoPawSharp className="text-green-500 "></IoPawSharp>
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  </TinderCard>
-                </div>
-              );
-            })}
+                    </TinderCard>
+                  </div>
+                );
+              })}
+          </div>
+          <TabMobile
+            tabmobile={tabmobile}
+            handleTabMobile={handleTabMobile}
+          ></TabMobile>
         </div>
-        <TabMobile
-          tabmobile={tabmobile}
-          handleTabMobile={handleTabMobile}
-        ></TabMobile>
       </div>
     </>
   );

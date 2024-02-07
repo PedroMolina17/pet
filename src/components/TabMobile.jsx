@@ -5,7 +5,7 @@ import { IoPawSharp } from "react-icons/io5";
 import PropTypes from "prop-types";
 const TabMobile = ({ tabmobile, handleTabMobile }) => {
   return (
-    <div className="fixed bottom-0  right-0 left-0 bg-[#0e1013] py-3 px-10 md:hidden">
+    <div className="bg-[#0e1013] py-3 px-10 md:hidden">
       <div className="flex justify-between items-center text-2xl ">
         <IoPawSharp
           onClick={() => handleTabMobile("home")}
@@ -14,15 +14,15 @@ const TabMobile = ({ tabmobile, handleTabMobile }) => {
           }`}
         ></IoPawSharp>
         <TbMessageCircle2Filled
-          onClick={() => handleTabMobile("likes")}
-          className={`cursor-pointer ${
-            tabmobile === "likes" ? " text-red-500" : ""
-          }`}
-        ></TbMessageCircle2Filled>
-        <PiStarFill
           onClick={() => handleTabMobile("message")}
           className={`cursor-pointer ${
             tabmobile === "message" ? " text-red-500" : ""
+          }`}
+        ></TbMessageCircle2Filled>
+        <PiStarFill
+          onClick={() => handleTabMobile("likes")}
+          className={`cursor-pointer ${
+            tabmobile === "likes" ? " text-red-500" : ""
           }`}
         ></PiStarFill>
         <FaUserAlt
