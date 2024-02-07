@@ -116,7 +116,7 @@ const Message = () => {
                   alt="Usuario"
                   src={message.imgUrl}
                 ></img>
-                <div className="flex mx-4 flex-col flex-grow min-w-0">
+                <div className="flex mx-4 flex-col flex-grow-1 min-w-0">
                   <p className="font-bold text-xl whitespace-nowrap overflow-hidden text-ellipsis h-8    ">
                     {message.usuario}
                   </p>

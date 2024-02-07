@@ -30,6 +30,14 @@ const Pet = () => {
   const [articulos, setArticulos] = useState([]);
 
   useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setTabMobile(tabmobile);
+      } else {
+        setTabMobile("home");
+      }
+    };
+
     fetch(
       "https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=beng&api_key=REPLACE_ME"
     )
@@ -39,7 +47,14 @@ const Pet = () => {
       .then((articulos) => {
         setArticulos(articulos);
       });
-  }, []);
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [tabmobile, setTabMobile]);
 
   return (
     <>
@@ -80,9 +95,11 @@ const Pet = () => {
             <span className="inline  text-xl font-bold text-red-500 ">Pet</span>
           </div>
           <div className="flex flex-col md:justify-center md:items-center overflow-hidden h-screen">
-            {tabmobile === "likes" && <Like />}
-            {tabmobile === "message" && <Message />}
-            {tabmobile === "expired" && <Expired />}
+            <div className="md:hidden">
+              {tabmobile === "likes" && <Like />}
+              {tabmobile === "message" && <Message />}
+              {tabmobile === "expired" && <Expired />}
+            </div>
             {tabmobile === "home" &&
               articulos.map((art) => {
                 return (
